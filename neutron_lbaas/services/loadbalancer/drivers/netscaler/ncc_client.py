@@ -93,7 +93,7 @@ class NSClient(object):
         LOG.info(msg)
         resp_status, result = self.create_resource("login", NITRO_LOGIN_URI,
                                                    "login", login_obj)
-        LOG.info(_LI("Response: status : %(status)s %(result)s"), {
+        LOG.info(_LI("Response: status : %(status)s %result(result)s"), {
                  "status": resp_status, "result": result['body']})
         result_body = jsonutils.loads(result['body'])
 
@@ -247,7 +247,7 @@ class NSClient(object):
                              "url": resource_uri,
                              "response_status": response_status,
                              "response_msg": response_msg}
-            LOG.info(_LI("Failed %(method)s operation on %(url)s "
+            LOG.exception(_LE("Failed %(method)s operation on %(url)s "
                               "status code: %(response_status)s "
                               "message: %(response_msg)s"), response_dict)
             raise NCCException(NCCException.RESPONSE_ERROR, response_status)
